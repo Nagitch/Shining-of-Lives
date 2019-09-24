@@ -16,6 +16,6 @@ public class ReactionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vfx.SetFloat("level", spectrum.Levels[1]);
+        vfx.SetFloat("level", spectrum.Levels[3]);
     }
 }
