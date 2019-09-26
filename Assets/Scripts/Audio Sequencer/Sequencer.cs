@@ -38,7 +38,8 @@ using UnityEditor;
 #endif
 
 [RequireComponent(typeof(AudioSource))]
-internal class Sequencer : SequencerBase
+// internal class Sequencer : SequencerBase
+public class Sequencer : SequencerBase
 {
 
     #region Enumerations
@@ -669,6 +670,10 @@ internal class Sequencer : SequencerBase
                 }
             }
         }
+    }
+
+    public int GetCurrentStep() {
+        return this._currentStep;
     }
 
 

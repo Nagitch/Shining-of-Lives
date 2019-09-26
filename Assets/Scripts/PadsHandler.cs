@@ -28,15 +28,15 @@ public class PadsHandler : MonoBehaviour
 
     public void PadPressed(Pad pad, float velocity)
     {
-        GetComponent<AudioSource>().Play();
-        Push2.SetLED(pad, LED.Color.RGB.Red, LED.Animation.None);
-        kickReaction.SetFloat("level", 1.0f);
+        // GetComponent<AudioSource>().Play();
+        // Push2.SetLED(pad, LED.Color.RGB.Red, LED.Animation.None);
+        // kickReaction.SetFloat("level", 1.0f);
     }
 
     public void PadReleased(Pad pad)
     {
-        Push2.SetLED(pad, LED.Color.RGB.LightGray);
-        kickReaction.SetFloat("level", 0.0f);
+        // Push2.SetLED(pad, LED.Color.RGB.LightGray);
+        // kickReaction.SetFloat("level", 0.0f);
     }
 
     public void AfterTouch(float pressure)
