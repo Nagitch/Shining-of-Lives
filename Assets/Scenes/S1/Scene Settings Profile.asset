@@ -176,7 +176,7 @@ MonoBehaviour:
     max: 10
   atmosphereThickness:
     m_OverrideState: 1
-    m_Value: 0.16
+    m_Value: 0
     min: 0
     max: 5
   skyTint:
