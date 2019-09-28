@@ -114,7 +114,7 @@ public class Push2Manager : MonoBehaviour
     {
         Push2.SetLED(Pads.All, LED.Color.RGB.Black);
         Push2.SetLED(Buttons.All, LED.Color.Mono.Black);
-        Push2.SetLED(Pads.All, LED.Color.RGB.LightGray);
+        Push2.SetLED(Pads.All, LED.Color.RGB.DarkGray);
         Push2.SetLED(Buttons.All, LED.Color.Mono.DarkGray);
         Push2.SetLED(Buttons.OnePerAll, LED.Color.RGB.Green);
         Push2.SetLED(Buttons.Record, LED.Color.RGB.Red);
