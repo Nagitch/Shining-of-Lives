@@ -14,6 +14,8 @@ public class Push2Layout : MonoBehaviour
     private int PAD_SEQUENCER_ORIGIN = 92;
     private int PAD_SAMPLER_ORIGIN = 36;
 
+    private int PAD_COLOR_GREEN = 11;
+
     private PadSequenceState[] padSequenceState = new PadSequenceState[16];
     private PadSequenceState[] padSequenceStatePrev = new PadSequenceState[16];
 
@@ -88,7 +90,7 @@ public class Push2Layout : MonoBehaviour
         for(int i=0; i < sequence.Length; ++i) {
             var pad = Pads.All.Find(e => { return e.number == SeqToPadsNumber(i); });
             if(padSequenceState[i] != padSequenceStatePrev[i]) {
-                var padColor = padSequenceState[i] == PadSequenceState.CURRENTSTEP ? LED.Color.RGB.Red : padSequenceState[i] == PadSequenceState.NOTE ? LED.Color.RGB.Green : LED.Color.RGB.DarkGray;
+                var padColor = padSequenceState[i] == PadSequenceState.CURRENTSTEP ? LED.Color.RGB.Red : padSequenceState[i] == PadSequenceState.NOTE ? PAD_COLOR_GREEN : LED.Color.RGB.DarkGray;
                 Push2.SetLED(pad, padColor);
             }
         }
@@ -97,7 +99,7 @@ public class Push2Layout : MonoBehaviour
         for(int i=0; i < padSampleState.Length; i++) {
             var pad = Pads.All.Find(e => { return e.number == SampleToPadsNumber(i); });
             if(padSampleState[i] != padSampleStatePrev[i]) {
-                var padColor = padSampleState[i] == PadSampleState.PLAYING ? LED.Color.RGB.Red : padSampleState[i] == PadSampleState.ASSIGNED ? LED.Color.RGB.LightGray : LED.Color.RGB.DarkGray;
+                var padColor = padSampleState[i] == PadSampleState.PLAYING ? LED.Color.RGB.Red : padSampleState[i] == PadSampleState.ASSIGNED ? PAD_COLOR_GREEN : LED.Color.RGB.DarkGray;
                 Push2.SetLED(pad, padColor);
             }
         }
