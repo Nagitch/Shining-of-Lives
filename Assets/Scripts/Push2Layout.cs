@@ -117,6 +117,9 @@ public class Push2Layout : MonoBehaviour
 
     public void PadPressed(Pad pad, float velocity)
     {
+        // sample area pressed
+        int samplePos = PadsNumberToSample(pad.number);
+        partSelected = samplePos != -1 ? samplePos : partSelected;
     }
 
     public void PadReleased(Pad pad)
@@ -142,5 +145,14 @@ public class Push2Layout : MonoBehaviour
 
     private int PadsNumberToSeq(int padNumber) {
         return 0;
+    }
+
+    private int PadsNumberToSample(int padNumber) {
+        int modulo = (padNumber - PAD_SAMPLER_ORIGIN) % 8;
+        int div = (padNumber - PAD_SAMPLER_ORIGIN) / 8;
+        if(modulo >= 5) {
+            return -1;
+        }
+        return modulo + (div * 4);
     }
 }

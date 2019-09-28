@@ -18,7 +18,7 @@ public class AudioSpectrumReaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var stretch = spectrum.Levels[groupNumber] * scale;
+        var stretch = spectrum.MeanLevels[groupNumber] * scale;
         transform.localScale = new Vector3(originalScale.x, originalScale.y + stretch, originalScale.z);
     }
 }
