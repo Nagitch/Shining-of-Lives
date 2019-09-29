@@ -19,7 +19,7 @@ public class Push2Layout : MonoBehaviour
     private PadSequenceState[] padSequenceState = new PadSequenceState[16];
     private PadSequenceState[] padSequenceStatePrev = new PadSequenceState[16];
 
-    private PadSampleState[] padSampleState = new PadSampleState[16];
+    public PadSampleState[] padSampleState = new PadSampleState[16];
     private PadSampleState[] padSampleStatePrev = new PadSampleState[16];
 
     public enum PadSequenceState {
@@ -32,6 +32,8 @@ public class Push2Layout : MonoBehaviour
         BLANK,
         ASSIGNED,
         PLAYING,
+        PLAYING_ONESHOT,
+        END_PLAYING_ONESHOT,
     }
 
     /// <summary>
@@ -79,10 +81,12 @@ public class Push2Layout : MonoBehaviour
 
         // confirm current samples
         for(int i=0; i < padSampleState.Length; ++i) {
-            if(sequencers[i].sequence[currentStep-1] == true) {
-                padSampleState[i] = PadSampleState.PLAYING;
-            } else {
-                padSampleState[i] = sequencers[i] != null ? PadSampleState.ASSIGNED : PadSampleState.BLANK;
+            if(padSampleState[i] != PadSampleState.PLAYING_ONESHOT) {
+                if(sequencers[i].sequence[currentStep-1] == true ) {
+                    padSampleState[i] = PadSampleState.PLAYING;
+                } else {
+                    padSampleState[i] = sequencers[i] != null ? PadSampleState.ASSIGNED : PadSampleState.BLANK;
+                }
             }
         }
 
@@ -95,13 +99,19 @@ public class Push2Layout : MonoBehaviour
             }
         }
 
-        // update pads lighting sequencer
+        // update pads lighting sample
         for(int i=0; i < padSampleState.Length; i++) {
             var pad = Pads.All.Find(e => { return e.number == SampleToPadsNumber(i); });
             if(padSampleState[i] != padSampleStatePrev[i]) {
-                var padColor = padSampleState[i] == PadSampleState.PLAYING ? LED.Color.RGB.Red : padSampleState[i] == PadSampleState.ASSIGNED ? PAD_COLOR_GREEN : LED.Color.RGB.DarkGray;
+                var padColor = padSampleState[i] == PadSampleState.PLAYING_ONESHOT ? LED.Color.RGB.Red :
+                padSampleState[i] == PadSampleState.END_PLAYING_ONESHOT ? LED.Color.RGB.Red :
+                padSampleState[i] == PadSampleState.PLAYING ? LED.Color.RGB.Red :
+                padSampleState[i] == PadSampleState.ASSIGNED ? PAD_COLOR_GREEN :
+                LED.Color.RGB.DarkGray;
                 Push2.SetLED(pad, padColor);
             }
+
+            // Keep LED Color when State is not changed
         }
 
         // update previouse state
@@ -120,6 +130,17 @@ public class Push2Layout : MonoBehaviour
         // sample area pressed
         int samplePos = PadsNumberToSample(pad.number);
         partSelected = samplePos != -1 ? samplePos : partSelected;
+        if(samplePos != -1) {
+            var sample = sequencers[partSelected].GetComponent<AudioSource>();
+            sample.Play();
+            padSampleState[partSelected] = PadSampleState.PLAYING_ONESHOT;
+            StartCoroutine( PadSampleSetStateLater(partSelected, PadSampleState.END_PLAYING_ONESHOT, 0.2f) );
+        }
+    }
+
+    private IEnumerator PadSampleSetStateLater(int part, PadSampleState state, float timeout) {
+        yield return new WaitForSeconds(timeout);
+        padSampleState[part] = state;
     }
 
     public void PadReleased(Pad pad)
@@ -150,9 +171,10 @@ public class Push2Layout : MonoBehaviour
     private int PadsNumberToSample(int padNumber) {
         int modulo = (padNumber - PAD_SAMPLER_ORIGIN) % 8;
         int div = (padNumber - PAD_SAMPLER_ORIGIN) / 8;
-        if(modulo >= 5) {
+        int sampleNum = modulo + (div * 4);
+        if(modulo >= 4 || sampleNum >= sequencers.Length) {
             return -1;
         }
-        return modulo + (div * 4);
+        return sampleNum;
     }
 }
