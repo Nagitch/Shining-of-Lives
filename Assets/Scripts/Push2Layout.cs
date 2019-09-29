@@ -139,7 +139,15 @@ public class Push2Layout : MonoBehaviour
         }
 
         // sequencer area pressed
-        PadsNumberToSeq(pad.number);
+        int seqPos = PadsNumberToSeq(pad.number);
+        if(seqPos != -1) {
+            var seqStep = sequencers[partSelected].sequence[seqPos];
+            if(seqStep == true) {
+                sequencers[partSelected].sequence[seqPos] = false;
+            } else {
+                sequencers[partSelected].sequence[seqPos] = true;
+            }
+        }
     }
 
     private IEnumerator PadSampleSetStateLater(int part, PadSampleState state, float timeout) {
