@@ -12,6 +12,7 @@ public class Push2Layout : MonoBehaviour
     private bool[] sequencePrev = new bool[16];
     private int currentStepPrev = 1;
     private int PAD_SEQUENCER_ORIGIN = 92;
+    private int PAD_SEQUENCER_BOTTOM = 68;
     private int PAD_SAMPLER_ORIGIN = 36;
 
     private int PAD_COLOR_GREEN = 11;
@@ -136,6 +137,9 @@ public class Push2Layout : MonoBehaviour
             padSampleState[partSelected] = PadSampleState.PLAYING_ONESHOT;
             StartCoroutine( PadSampleSetStateLater(partSelected, PadSampleState.END_PLAYING_ONESHOT, 0.2f) );
         }
+
+        // sequencer area pressed
+        PadsNumberToSeq(pad.number);
     }
 
     private IEnumerator PadSampleSetStateLater(int part, PadSampleState state, float timeout) {
@@ -165,7 +169,15 @@ public class Push2Layout : MonoBehaviour
     }
 
     private int PadsNumberToSeq(int padNumber) {
-        return 0;
+        if(padNumber < PAD_SEQUENCER_BOTTOM) {
+            return -1;
+        }
+        var basePos = padNumber - PAD_SEQUENCER_BOTTOM;
+        int modulo = basePos % 8;
+        int div = basePos / 8;
+        var col = 4 - div;
+        var pos = (col-1) * 8 + modulo;
+        return pos;
     }
 
     private int PadsNumberToSample(int padNumber) {
