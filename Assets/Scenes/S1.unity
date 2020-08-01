@@ -636,13 +636,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
   clip: {fileID: 0}
   signatureLo: 16
-  sequence: 01000100010001000100010001000100
+  sequence: 00000000000000000000000000000000
   maxBackBufferSize: 10
   increaseBackBufferBy: 0
   fadeInDuration: 0
@@ -1053,6 +1053,82 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 401d3ec7bb54e0b41826d2fafef3b9a3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae4c211900a2c83488186fa48f884abe, type: 3}
+--- !u!114 &268871925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  rotation:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 360
+  skyIntensityMode:
+    m_OverrideState: 0
+    m_Value: 0
+  exposure:
+    m_OverrideState: 0
+    m_Value: 0
+  multiplier:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  upperHemisphereLuxValue:
+    m_OverrideState: 0
+    m_Value: 1
+    min: 0
+  desiredLuxValue:
+    m_OverrideState: 0
+    m_Value: 20000
+  updateMode:
+    m_OverrideState: 0
+    m_Value: 0
+  updatePeriod:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+  includeSunInBaking:
+    m_OverrideState: 0
+    m_Value: 0
+  sunSize:
+    m_OverrideState: 0
+    m_Value: 0.017
+    min: 0
+    max: 1
+  sunSizeConvergence:
+    m_OverrideState: 0
+    m_Value: 2.11
+    min: 1
+    max: 10
+  atmosphereThickness:
+    m_OverrideState: 0
+    m_Value: 0
+    min: 0
+    max: 5
+  skyTint:
+    m_OverrideState: 0
+    m_Value: {r: 0.19600001, g: 0.160328, b: 0.160328, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  groundColor:
+    m_OverrideState: 0
+    m_Value: {r: 0.103172995, g: 0.118999995, b: 0.11794487, a: 1}
+    hdr: 0
+    showAlpha: 1
+    showEyeDropper: 1
+  enableSunDisk:
+    m_OverrideState: 0
+    m_Value: 1
 --- !u!1 &310866011 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5319155819898258574, guid: 1fe6f7315f1d0194cacb7e83eb8d9109,
@@ -2740,7 +2816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc75dd5ce72784244bb7ab97f7143bd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 126
   log: 0
   isMuted: 0
@@ -3028,13 +3104,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
   clip: {fileID: 0}
   signatureLo: 16
-  sequence: 01000000010000000100000001000000
+  sequence: 00000000000000000000000000000000
   maxBackBufferSize: 8
   increaseBackBufferBy: 0
   fadeInDuration: 0
@@ -3577,7 +3653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 11400000, guid: 9ad192768be75fb4e84a22569bfe579d, type: 2}
   m_StaticLightingSkyUniqueID: 2
-  m_SkySettings: {fileID: 1756927451}
+  m_SkySettings: {fileID: 268871925}
   m_SkySettingsFromProfile: {fileID: 2737273188676062984, guid: 9ad192768be75fb4e84a22569bfe579d,
     type: 2}
 --- !u!114 &810443795
@@ -4337,7 +4413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
@@ -4358,7 +4434,8 @@ AudioSource:
   m_GameObject: {fileID: 1070114727}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 89757d7a85c22eb4eaeabe6d92dee2a1,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 1f019b765c5aa2147a384e763fbbb241, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -5507,13 +5584,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
   clip: {fileID: 0}
   signatureLo: 16
-  sequence: 00010000000100000001000000010000
+  sequence: 00000000000000000000000000000000
   maxBackBufferSize: 12
   increaseBackBufferBy: 0
   fadeInDuration: 0
@@ -5660,13 +5737,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
   clip: {fileID: 0}
   signatureLo: 16
-  sequence: 00000100000001000000010000010000
+  sequence: 00000000000000000000000000000000
   maxBackBufferSize: 10
   increaseBackBufferBy: 0
   fadeInDuration: 0
@@ -6203,7 +6280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
@@ -6711,7 +6788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
@@ -6820,82 +6897,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1756927451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3df29e7cc05fbec4aa43e06ea875565d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  active: 1
-  m_AdvancedMode: 0
-  rotation:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 360
-  skyIntensityMode:
-    m_OverrideState: 0
-    m_Value: 0
-  exposure:
-    m_OverrideState: 0
-    m_Value: 0
-  multiplier:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  upperHemisphereLuxValue:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-  desiredLuxValue:
-    m_OverrideState: 0
-    m_Value: 20000
-  updateMode:
-    m_OverrideState: 0
-    m_Value: 0
-  updatePeriod:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  includeSunInBaking:
-    m_OverrideState: 0
-    m_Value: 0
-  sunSize:
-    m_OverrideState: 0
-    m_Value: 0.017
-    min: 0
-    max: 1
-  sunSizeConvergence:
-    m_OverrideState: 0
-    m_Value: 2.11
-    min: 1
-    max: 10
-  atmosphereThickness:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-    max: 5
-  skyTint:
-    m_OverrideState: 0
-    m_Value: {r: 0.19600001, g: 0.160328, b: 0.160328, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  groundColor:
-    m_OverrideState: 0
-    m_Value: {r: 0.103172995, g: 0.118999995, b: 0.11794487, a: 1}
-    hdr: 0
-    showAlpha: 1
-    showEyeDropper: 1
-  enableSunDisk:
-    m_OverrideState: 0
-    m_Value: 1
 --- !u!1 &1761712188
 GameObject:
   m_ObjectHideFlags: 0
@@ -7211,7 +7212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
@@ -7824,13 +7825,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7216cfe1b28a1948bec228ecd2dbf84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playWhenReady: 0
+  playWhenReady: 1
   bpm: 0
   log: 0
   isMuted: 0
   clip: {fileID: 0}
   signatureLo: 16
-  sequence: 00000000000000000000000000000100
+  sequence: 00000000000000000000000000000000
   maxBackBufferSize: 8
   increaseBackBufferBy: 0
   fadeInDuration: 0
